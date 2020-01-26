@@ -1,0 +1,53 @@
+{% extends "template-base.html" %}
+{% block head %}
+
+    <!-- syntax highlighting -->
+    <link rel="stylesheet" href="assets/vendor/docco.min.css" />
+    <script src="assets/vendor/highlight.min.js"></script>
+
+    <!-- expandable code samples -->
+    <script src="assets/js/expandcode.js"></script>
+    <!-- multi-code selection tabs -->
+    <script src="assets/js/multicodetab.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".multicode").minitabs();
+            hljs.initHighlighting();
+            make_code_expandable();
+        });
+    </script>
+
+
+{% endblock %}
+
+{% block main %}
+  <article class="pt-3 p-md-3">
+    {% if target.lang != "en" and "en" in currentpage.targets %}
+    {# Add a "sorry this page isn't translated" banner. #}
+    {# TODO: pull from a strings file #}
+    <div class="devportal-callout note mb-5"><strong>{{target.strings.tl_banner.head}}</strong>
+      <p class="mb-0">{{target.strings.tl_banner.body}}</p>
+    </div><!--/.devportal-callout-->
+    {% endif %}
+    <div class="content">
+        {{ content }}
+    </div>
+  </article>
+{% endblock %}
+
+{% block right_sidebar %}
+  <div class="card" id="page-toc-wrapper">
+    <div class="card-header">
+      <h4>{{target.strings.pagetoc}}</h4>
+    </div>
+    <ul class="card-body">
+      {{ sidebar_content }}
+    </ul>
+  </div>
+{% endblock %}
+
+{% block endbody %}
+<script type="application/javascript">
+  gtag('set', {'content_group1': 'Content Docs'});
+</script>
+{% endblock %}

@@ -1,0 +1,314 @@
+{% extends "template-base.html" %}
+{% block head %}
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+{% endblock %}
+
+{% block bodyclasses %}no-sidebar{% endblock %}
+{% block mainclasses %}landing{% endblock %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block main %}
+  <section class="container-fluid card-grid card-grid-2x2">
+      <div class="section-hero card justify-content-end">
+        <div>
+          <h1 class="display-4">{{target.strings.home.intro.head}}</h1>
+          <div class="blurb">
+            <p>{{target.strings.home.intro.body1}}</p>
+            <p>{{target.strings.home.intro.body2}}</p>
+            <h5>{{target.strings.home.intro.subhead}}</h5>
+            <p>{{target.strings.home.intro.sub_body}}</p>
+          </div><!--/.blurb-->
+          <a class="btn btn-outline-secondary external-link" href="https://goo.gl/forms/sHMFxU8dKiTUaltE3" target="_blank">{{target.strings.home.intro.cta}} <i class="fa fa-external-link" aria-hidden="true"></i></a>
+        </div>
+      </div><!--/.section-hero-->
+
+      {% set flag_n = cycler(* range(1,99)) %}
+      <div class="card">
+        {% set cardpage = pages|selectattr('html', 'defined_and_equalto', 'get-started-with-the-rippled-api.html')|first %}
+        <div class="card-header">
+          <h3 class="card-title"><a href="{{cardpage.html}}">{{cardpage.name}}</a></h3>
+        </div><!--/.card-header-->
+        <div class="card-body">
+          <p>{{cardpage.blurb}}</p>
+        </div><!--/.card-body-->
+        <div class="card-footer">
+          <a href="get-started-with-the-rippled-api.html" class="btn btn-outline-secondary">{{cardpage.cta_text}}</a>
+        </div><!--/.card-footer-->
+        <div class="flag-vertical">{{"%02d"|format(flag_n.next())}}</div>
+      </div><!--/.card-->
+
+      <div class="card pr-0">
+        <div class="card-header">
+          <h3 class="card-title"><a href="concepts.html">{{target.strings.home.cards_1.learn.head}}</a></h3>
+        </div><!--/.card-header-->
+        <div class="card-body">
+          <div class="curated-links">
+            <ul>
+              <li><a href="intro-to-consensus.html">{{(pages|selectattr('html', 'defined_and_equalto', 'intro-to-consensus.html')|first).name}}</a></li>
+              <li><a href="xrp.html">{{target.strings.home.cards_1.learn.about_xrp}}</a></li>
+              <li><a href="payment-system-basics.html">{{(pages|selectattr('html', 'defined_and_equalto', 'payment-system-basics.html')|first).name}}</a></li>
+              <li><a href="decentralized-exchange.html">{{(pages|selectattr('html', 'defined_and_equalto', 'decentralized-exchange.html')|first).name}}</a></li>
+            </ul>
+          </div><!--/.curated-links-->
+        </div><!--/.card-body-->
+        <div class="card-footer">
+          <a href="concepts.html" class="btn btn-outline-secondary">{{target.strings.home.cards_1.learn.cta}}</a>
+        </div><!--/.card-footer-->
+        <div class="flag-vertical">{{"%02d"|format(flag_n.next())}}</div>
+      </div><!--/.card-->
+
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title"><a href="docs.html">{{target.strings.home.cards_1.read_docs.head}}</a></h3>
+        </div><!--/.card-header-->
+        <div class="card-body">
+          <div class="curated-links">
+            <ul>
+              <li><a href="references.html">{{(pages|selectattr('html', 'defined_and_equalto', 'references.html')|first).longer_name}}</a></li>
+              <li><a href="concepts.html">{{(pages|selectattr('html', 'defined_and_equalto', 'concepts.html')|first).name}}</a></li>
+              <li><a href="tutorials.html">{{(pages|selectattr('html', 'defined_and_equalto', 'tutorials.html')|first).name}}</a></li>
+              <li><a href="docs.html#full-doc-index">{{target.strings.home.cards_1.read_docs.full_doc_index}}</a></li>
+            </ul>
+          </div><!--/.curated-links-->
+        </div><!--/.card-body-->
+        <div class="card-footer">
+          <a href="docs.html" class="btn btn-outline-secondary">{{target.strings.home.cards_1.read_docs.cta}}</a>
+        </div><!--/.card-footer-->
+        <div class="flag-vertical">{{"%02d"|format(flag_n.next())}}</div>
+      </div><!--/.card-->
+
+      <div class="card pr-0">
+        <div class="card-header">
+          <h3 class="card-title">{{target.strings.home.cards_1.explore.head}}</h3>
+        </div><!--/.card-header-->
+        <div class="card-body">
+          <p>{{target.strings.home.cards_1.explore.blurb}}</p>
+        </div><!--/.card-body-->
+        <div class="card-footer">
+          <div class="readmore">
+            <a href="https://livenet.xrpl.org/" class="btn btn-outline-secondary">{{target.strings.home.cards_1.explore.cta}}</a>
+          </div>
+        </div><!--/.card-footer-->
+        <div class="flag-vertical">{{"%02d"|format(flag_n.next())}}</div>
+      </div><!--/.card-->
+
+  </section><!--/"Above the fold" .card-grid-2x2-->
+
+  <section class="container-fluid card-grid">
+    <div class="card pl-0">
+      <div class="card-header">
+        <h2><a href="/blog/">XRP Ledger Blog</a></h2>
+      </div><!--/.card-header-->
+      <div class="card-body">
+        <div class="blurb">
+          <p>Visit the blog for the latest XRP Ledger info, including <a href="/blog/label/rippled-release-notes.html">Release Notes</a>, <a href="/blog/label/amendments.html">Amendments</a> to the XRP Ledger protocol, <a href="/blog/label/features.html">Feature articles</a> from XRP experts, and more.</p>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="/blog/" class="btn btn-outline-secondary">View Blog</a>
+      </div>
+    </div>
+  </section>
+
+  {% set flag_n = cycler(* range(1,99)) %}
+  <section class="container-fluid card-grid card-grid-2x4" id="xrp_ledger_intro">
+    <div class="card section-hero pl-0">
+      <div class="card-header">
+        <h2><a href="xrp-ledger-overview.html">{{target.strings.home.what_is_xrpl.head}}</a></h2>
+      </div><!--/.card-header-->
+      <div class="card-body">
+        <p>{{target.strings.home.what_is_xrpl.body_1}}</p>
+      </div>
+    </div><!--/.section-hero-->
+
+    <a href="{{target.strings.home.what_is_xrpl.digital_asset.url}}" class="card">
+      <div class="card-header"><img class="card-img-top" src="assets/img/icon-xrp-digital-asset.svg" alt="(digital asset icon)" /></div>
+      <div class="card-footer"><h3>{{target.strings.home.what_is_xrpl.digital_asset.head}}</h3></div>
+      <div class="flag-vertical">{{"%02d"|format(flag_n.next())}}</div>
+    </a><!--/.card-->
+
+    <a href="{{target.strings.home.what_is_xrpl.censorship_resistant.url}}" class="card">
+      <div class="card-header"><img class="card-img-top" src="assets/img/icon-xrp-censorship-resistant.svg" alt="(censorship resistance icon)" /></div>
+      <div class="card-footer"><h3>{{target.strings.home.what_is_xrpl.censorship_resistant.head}}</h3></div>
+      <div class="flag-vertical">{{"%02d"|format(flag_n.next())}}</div>
+    </a><!--/.card-->
+
+    <a href="{{target.strings.home.what_is_xrpl.fast_algorithm.url}}" class="card">
+      <div class="card-header"><img class="card-img-top" src="assets/img/icon-xrp-fast-algorithm.svg" alt="(consensus algorithm icon)" /></div>
+      <div class="card-footer"><h3>{{target.strings.home.what_is_xrpl.fast_algorithm.head}}</h3></div>
+      <div class="flag-vertical">{{"%02d"|format(flag_n.next())}}</div>
+    </a><!--/.card-->
+
+    <a href="{{target.strings.home.what_is_xrpl.finite_xrp.url}}" class="card">
+      <div class="card-header"><img class="card-img-top" src="assets/img/icon-xrp-finite.svg" alt="(xrp supply icon)" /></div>
+      <div class="card-footer"><h3>{{target.strings.home.what_is_xrpl.finite_xrp.head}}</h3></div>
+      <div class="flag-vertical">{{"%02d"|format(flag_n.next())}}</div>
+    </a><!--/.card-->
+
+    <a href="{{target.strings.home.what_is_xrpl.responsible_governance.url}}" class="card">
+      <div class="card-header"><img class="card-img-top" src="assets/img/icon-xrp-responsible.svg" alt="(governance icon)" /></div>
+      <div class="card-footer"><h3>{{target.strings.home.what_is_xrpl.responsible_governance.head}}</h3></div>
+      <div class="flag-vertical">{{"%02d"|format(flag_n.next())}}</div>
+    </a><!--/.card-->
+
+    <a href="{{target.strings.home.what_is_xrpl.secure_crypto.url}}" class="card">
+      <div class="card-header"><img class="card-img-top" src="assets/img/icon-xrp-secure.svg" alt="(cryptography icon)" /></div>
+      <div class="card-footer"><h3>{{target.strings.home.what_is_xrpl.secure_crypto.head}}</h3></div>
+      <div class="flag-vertical">{{"%02d"|format(flag_n.next())}}</div>
+    </a><!--/.card-->
+
+    <a href="{{target.strings.home.what_is_xrpl.smart_contracts.url}}" class="card">
+      <div class="card-header"><img class="card-img-top" src="assets/img/icon-xrp-modern-smart-contracts.svg" alt="(smart contracts icon)" /></div>
+      <div class="card-footer"><h3>{{target.strings.home.what_is_xrpl.smart_contracts.head}}</h3></div>
+      <div class="flag-vertical">{{"%02d"|format(flag_n.next())}}</div>
+    </a><!--/.card-->
+
+    <a href="{{target.strings.home.what_is_xrpl.decentralized_exchange.url}}" class="card">
+      <div class="card-header"><img class="card-img-top" src="assets/img/icon-xrp-on-ledger-decentralized.svg" alt="(decentralized exchange icon)" /></div>
+      <div class="card-footer"><h3>{{target.strings.home.what_is_xrpl.decentralized_exchange.head}}</h3></div>
+      <div class="flag-vertical">{{"%02d"|format(flag_n.next())}}</div>
+    </a><!--/.card-->
+
+  </section><!--/#xrp_ledger_intro-->
+
+
+  <section class="container-fluid card-grid card-grid-2x2">
+    <div class="section-hero card pl-0">
+      <h2>Start Building</h2>
+      <div class="blurb">
+        <p>Use these tutorials to get step-by-step guidance to perform common tasks with the XRP Ledger.</p>
+      </div>
+    </div><!--/.section-hero-->
+
+    {% set flag_n = cycler(* range(1,99)) %}
+    <div class="card">
+      <div class="card-header">
+          <a href="list-xrp-in-your-exchange.html" class="header-link">
+            <img class="image-icon" src="assets/img/icon-xrp-list-xrp.svg" >
+            <h3 class="card-title">List XRP on Your Exchange</h3>
+        </a>
+      </div><!--/.card-header-->
+      <div class="card-body">
+        <p>Run a digital asset exchange? Follow these steps to add XRP.</p>
+      </div><!--/.card-body-->
+      <div class="card-footer">
+        <div class="readmore">
+          <a href="list-xrp-in-your-exchange.html" class="btn btn-outline-secondary">List XRP</a>
+        </div>
+      </div><!--/.card-footer-->
+      <div class="flag-vertical">{{"%02d"|format(flag_n.next())}}</div>
+    </div><!--/.card-->
+
+    <div class="card">
+      <div class="card-header">
+        <a href="send-xrp.html" class="header-link">
+          <img class="image-icon" src="assets/img/icon-xrp-send-xrp.svg" >
+          <h3 class="card-title">Send XRP</h3>
+        </a>
+      </div><!--/.card-header-->
+      <div class="card-body">
+        <p>Learn how to send test payments right from your browser.</p>
+      </div><!--/.card-body-->
+      <div class="card-footer">
+        <div class="readmore">
+          <a href="send-xrp.html" class="btn btn-outline-secondary">Send XRP</a>
+        </div>
+      </div><!--/.card-footer-->
+      <div class="flag-vertical">{{"%02d"|format(flag_n.next())}}</div>
+    </div><!--/.card-->
+
+    <div class="card">
+      <div class="card-header">
+        <a href="manage-the-rippled-server.html" class="header-link">
+          <img class="image-icon" src="assets/img/icon-xrp-run-rippled.svg" >
+          <h3 class="card-title">Run a rippled Server</h3>
+        </a>
+        </div><!--/.card-header-->
+      <div class="card-body">
+        <p>Install, configure, and manage the core server that powers the XRP Ledger.</p>
+      </div><!--/.card-body-->
+      <div class="card-footer">
+        <div class="readmore">
+          <a href="manage-the-rippled-server.html" class="btn btn-outline-secondary">Run rippled</a>
+        </div>
+      </div><!--/.card-footer-->
+      <div class="flag-vertical">{{"%02d"|format(flag_n.next())}}</div>
+    </div><!--/.card-->
+
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title"><a href="tutorials.html">More Tutorials</a></h3>
+      </div><!--/.card-header-->
+      <div class="card-body">
+        <div class="curated-links">
+          <ul>
+            <li><a href="assign-a-regular-key-pair.html">Assign a Regular Key Pair</a></li>
+            <li><a href="set-up-multi-signing.html">Set Up Multi-Signing</a></li>
+            <li><a href="use-escrows.html">Use Escrows</a></li>
+            <li><a href="use-payment-channels.html">Use Payment Channels</a></li>
+          </ul>
+        </div><!--/.curated-links-->
+      </div><!--/.card-body-->
+      <div class="card-footer">
+        <a href="tutorials.html" class="btn btn-outline-secondary">All Tutorials</a>
+      </div><!--/.card-footer-->
+      <div class="flag-vertical">{{"%02d"|format(flag_n.next())}}</div>
+    </div><!--/.card-->
+
+  </section>
+
+  <section class="container-fluid related-projects card-grid card-grid-2x1">
+    <div class="section-hero card pl-0">
+      <h2>Related Projects</h2>
+      <div class="blurb">
+        <p>You're not alone in building the Internet of Value. These projects are proudly collaborating with the XRP Ledger to make all the world's money move like information moves today.</p>
+      </div>
+    </div><!--/.section-hero-->
+
+    {% set flag_n = cycler(* range(1,99)) %}
+
+    <div class="card interledger-link">
+      <div class="card-header">
+          <img class="project-icon" src="assets/img/ilp_logo.svg" />
+          <h3 class="card-title">Interledger</h3>
+      </div><!--/.card-header-->
+      <div class="card-body">
+        <p class="project-summary">Interledger is an open protocol suite for sending payments across different ledgers.</p>
+      </div><!--/.card-body-->
+      <div class="card-footer">
+        <a class="btn btn-outline-secondary external-link" href="https://interledger.org/" target="_blank">Learn More <i class="fa fa-external-link" aria-hidden="true"></i></a>
+      </div><!--/.card-footer-->
+      <div class="flag-vertical">{{"%02d"|format(flag_n.next())}}</div>
+    </div><!--/.card-->
+
+    <div class="card xpring-link">
+        <div class="card-header">
+            <img class="project-icon" src="assets/img/xpring-logo.svg" alt="Xpring" />
+            <h3 class="card-title">Xpring</h3>
+        </div><!--/.card-header-->
+        <div class="card-body">
+          <p class="project-summary">Xpring (pronounced “spring”) is a Ripple initiative that builds infrastructure and helps innovative blockchain projects grow through investments and partnerships.</p>
+        </div><!--/.card-body-->
+        <div class="card-footer">
+          <a class="btn btn-outline-secondary external-link" href="https://xpring.io/" target="_blank">Learn More <i class="fa fa-external-link" aria-hidden="true"></i></a>
+        </div><!--/.card-footer-->
+        <div class="flag-vertical">{{"%02d"|format(flag_n.next())}}</div>
+      </div><!--/.card-->
+
+  </section><!-- / Related Projects -->
+{% endblock %}
+
+
+{% block endbody %}
+<script type="application/javascript">
+  gtag('set', {'content_group1': 'Hub Pages'});
+</script>
+{% endblock %}

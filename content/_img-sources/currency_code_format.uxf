@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>40</x>
+      <y>70</y>
+      <w>20</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>00</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>40</x>
+      <y>90</y>
+      <w>60</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0;40.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>80</x>
+      <y>120</y>
+      <w>200</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>Type code (8 bits)
+0x00 for ISO 4217 or 
+pseudo-ISO currency</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>70</x>
+      <y>70</y>
+      <w>220</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>Reserved (88 bits)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>460</x>
+      <y>70</y>
+      <w>180</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>Reserved (40 bits)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>300</x>
+      <y>70</y>
+      <w>150</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>ISO code (24 bits)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>30</x>
+      <y>40</y>
+      <w>620</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Issued Currency Code Format</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>310</x>
+      <y>90</y>
+      <w>40</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0;20.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>330</x>
+      <y>110</y>
+      <w>130</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>3 chars of ASCII
+(can't be "XRP")</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>30</x>
+      <y>220</y>
+      <w>620</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Special Case XRP Currency Code</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>40</x>
+      <y>250</y>
+      <w>600</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>0x00000000000000000000000000000000000000000 (160 bits of 0's)</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

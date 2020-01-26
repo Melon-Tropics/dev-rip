@@ -1,0 +1,69 @@
+{% set flag_n = cycler(* range(1,99)) %}
+<footer class="xrpl-footer" role="contentinfo">
+  <section class="container-fluid card-grid card-grid-Nx1">
+    {% set funnels = [] %}
+    {% for page in pages %}
+      {% if page.funnel is defined and page.funnel not in funnels %}
+        {% set parent_page = pages|selectattr('funnel', 'defined_and_equalto', page.funnel)|first %}
+
+        <div class="card">
+          <div class="card-header">
+            <h5><a href="{{ parent_page.html }}">{{ parent_page.name }}</a></h5>
+          </div><!--/.card-header-->
+          <div class="card-body">
+            {% set depth = 1 %}
+            {% set count = 5 %}
+            {% include 'template-page-children.html' %}
+          </div><!--/.card-body-->
+          <div class="flag-vertical">{{"%02d"|format(flag_n.next())}}</div>
+        </div><!--/.card -->
+
+        {% set _ = funnels.append(page.funnel) %}
+      {% endif %}
+    {% endfor %}
+
+        <div class="card">
+          <div class="card-header">
+            <h5><a href="https://ripple.com/" target="_blank">Ripple<i class="fa fa-external-link"></i></a></h5>
+          </div><!--/.card-header-->
+          <div class="card-body">
+            <div class="children-display">
+              <ul>
+                <li class="level-1"><a href="https://ripple.com/company/careers/" target="_blank">{{target.strings.footer.ripple.careers}} <i class="fa fa-external-link"></i></a></li>
+                <li class="level-1"><a href="https://github.com/ripple/" target="_blank">{{target.strings.footer.ripple.github}} <i class="fa fa-external-link"></i></a></li>
+                <li class="level-1"><a href="https://ripple.com/collateral/#xrp" target="_blank">{{target.strings.footer.ripple.xrp_resources}} <i class="fa fa-external-link"></i></a></li>
+              </ul>
+            </div>
+          </div><!--/.card-body-->
+          <div class="flag-vertical">{{"%02d"|format(flag_n.next())}}</div>
+        </div><!--/.card -->
+  </section>
+
+  <section class="container-fluid p-5 pl-sm-0">
+
+    <nav role="navigation" class="d-flex mb-3 language-selector">
+      <img class="language_selector_icon" src="assets/img/icon-language-selector.svg" width="32" height="40" alt="language selection icon" />
+      <ul class="nav">
+        {% for lang in config.languages %}
+        <li class="nav-item">
+          {% if lang.code == target.name %}
+          <a class="nav-link active" href="{{lang.prefix}}{{currentpage.html}}"><i class="fa fa-check-circle"></i> {{lang.display_name}}</a>
+          {% else %}
+          <a class="nav-link" href="{{lang.prefix}}{{currentpage.html}}">{{lang.display_name}}</a>
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </nav>
+
+    <div class="absolute_bottom_footer">
+      <span>&copy; XRP Ledger Project 2019</span>
+      <span><a href="https://raw.githubusercontent.com/ripple/ripple-dev-portal/master/LICENSE">{{target.strings.footer.license}}</a></span>
+    </div><!-- /.absolute_bottom_footer -->
+
+  </section>
+</footer>
+
+<!-- Jump to top button -->
+<a href="#main_content_wrapper" class="jump-to-top btn btn-primary btn-lg" role="button" title="{{target.strings.to_top.short}}">{{target.strings.to_top.short}}</a>
+<script type="text/javascript" src="assets/js/jump-to-top.js"></script>

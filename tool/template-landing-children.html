@@ -1,0 +1,33 @@
+{% extends "template-base.html" %}
+
+{% block main %}
+  {% if content %}
+
+  <section class="pt-3 p-md-3">
+    <article class="content">
+      {{ content }}
+
+      {% set show_blurbs = True %}
+      {% set depth= 1 %}
+      {% include 'template-page-children.html' %}
+    </article>
+  </section>
+
+  {% else %}
+  <section class="pt-3 p-md-3">
+    <article class="content">
+      <h1 id="main-page-header">{{ currentpage.name }}</h1>
+      <p class="blurb">{{ currentpage.blurb }}</p>
+      {% set show_blurbs = True %}
+      {% set depth= 1 %}
+      {% include 'template-page-children.html' %}
+    </article>
+  </section>
+  {% endif %}
+{% endblock %}
+
+{% block endbody %}
+<script type="application/javascript">
+  gtag('set', {'content_group1': 'Hub Pages'});
+</script>
+{% endblock %}
